@@ -38,3 +38,9 @@ services:
     depends_on:
       - "backend"
       - "postgresql"
+
+volumes:
+  static_volume:
+    external: true
+  media_volume:
+    external: true
