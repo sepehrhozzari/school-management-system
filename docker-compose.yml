@@ -32,7 +32,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "./nignx/nginx.conf:/etc/nginx/conf.d/default.conf"
+      - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf"
       - "static_volume:/school/static"
       - "media_volume:/school/media"
     depends_on:
