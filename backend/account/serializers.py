@@ -2,9 +2,21 @@ from rest_framework import serializers
 from .models import User, Grade, Major
 
 
+class GradeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Grade
+        fields = "__all__"
+
+
+class MajorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Major
+        fields = "__all__"
+
+
 class UserSerializer(serializers.ModelSerializer):
-    major = serializers.SerializerMethodField()
-    grade = serializers.SerializerMethodField()
+    major = MajorSerializer()
+    grade = GradeSerializer()
 
     class Meta:
         model = User
@@ -32,9 +44,9 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        # pop grade name and major name from validated_data
-        major_data = validated_data.pop("major")
-        grade_data = validated_data.pop("grade")
+        # get grade name and major name from validated_data
+        major_data = validated_data.get("major", "")
+        grade_data = validated_data.get("grade", "")
 
         # get grade and major instacne
         try:
@@ -52,13 +64,3 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data["major"] = major
         validated_data["grade"] = grade
         return super().update(instance, validated_data)
-
-    def get_major(self, user):
-        if user.major is not None:
-            return user.major
-        return ""
-
-    def get_grade(self, user):
-        if user.grade is not None:
-            return user.grade
-        return ""

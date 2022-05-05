@@ -31,8 +31,8 @@ class User(AbstractUser):
     national_code = models.CharField(max_length=10, unique=True, validators=[
                                      national_code_validator], verbose_name="کد ملی")
     profile_picture = models.ImageField(
-        upload_to="account/", verbose_name="عکس پروفایل")
-    address = models.TextField(verbose_name="آدرس")
+        upload_to="account/", verbose_name="عکس پروفایل", blank=True)
+    address = models.TextField(verbose_name="آدرس", blank=True)
     data_of_birth = models.DateTimeField(
         verbose_name="تاریخ تولد", null=True, blank=True)
     father_name = models.CharField(
