@@ -29,8 +29,9 @@ class User(AbstractUser):
     is_student = models.BooleanField(default=False, verbose_name="دانش آموز")
     is_teacher = models.BooleanField(default=False, verbose_name="معلم")
     national_code = models.CharField(max_length=10, unique=True, validators=[
-                                     national_code_validator])
-    profile_picture = models.ImageField(upload_to="account/")
+                                     national_code_validator], verbose_name="کد ملی")
+    profile_picture = models.ImageField(
+        upload_to="account/")
     address = models.TextField(verbose_name="آدرس")
     data_of_birth = models.DateTimeField(
         verbose_name="تاریخ تولد", null=True, blank=True)
