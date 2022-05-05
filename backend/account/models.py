@@ -14,6 +14,17 @@ class Grade(models.Model):
         return self.name
 
 
+class Major(models.Model):
+    name = models.CharField(max_length=200, verbose_name="نام رشته تحصیلی")
+
+    class Meta:
+        verbose_name = "رشته تحصیلی"
+        verbose_name_plural = "رشته های تحصیلی"
+
+    def __str__(self):
+        return self.name
+
+
 class User(AbstractUser):
     is_student = models.BooleanField(default=False, verbose_name="دانش آموز")
     is_teacher = models.BooleanField(default=False, verbose_name="معلم")
@@ -27,6 +38,8 @@ class User(AbstractUser):
         max_length=200, null=True, blank=True, verbose_name="نام پدر")
     grade = models.ForeIgnKey(Grade, null=True, blank=True, on_delete=models.SET_NULL,
                               related_name="students", verbose_name="مقطع تحصیلی")
+    major = models.ForeIgnKey(Major, null=True, blank=True, on_delete=models.SET_NULL,
+                              related_name="students", verbose_name="رشته تحصیلی")
 
     def __str__(self):
         return self.get_full_name()
