@@ -6,6 +6,7 @@ UserAdmin.list_display += ("is_student", "is_teacher",
                            "grade", "major", "father_name")
 UserAdmin.list_filter += ("is_teacher", "is_studnet",
                           "data_of_birth", "major", "grade")
+UserAdmin.search_fields += ("national_code", "father_name")
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Grade)
