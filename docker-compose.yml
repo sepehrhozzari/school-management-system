@@ -9,3 +9,17 @@ services:
       - "5432"
     volumes: "./postgresql/data:/var/lib/postgresql/data"
     env_file: "./postgresql/.env"
+
+  backend:
+    build: "./backend/"
+    container_name: "django"
+    restart: "always"
+    expose:
+      - "8000"
+    env_file: "./backend/.env"
+    volumes:
+      - "./backend:/school/"
+      - "static_volume:/school/static"
+      - "media_volume:/school/media"
+    depends_on:
+      - "postgresql"
