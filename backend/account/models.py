@@ -27,3 +27,6 @@ class User(AbstractUser):
         max_length=200, null=True, blank=True, verbose_name="نام پدر")
     grade = models.ForeIgnKey(Grade, null=True, blank=True, on_delete=models.SET_NULL,
                               related_name="students", verbose_name="مقطع تحصیلی")
+
+    def __str__(self):
+        return self.get_full_name()
