@@ -3,8 +3,8 @@ from .models import User, Grade, Major
 
 
 class UserSerializer(serializers.ModelSerializer):
-    major = serializers.CharField(source="major.name")
-    grade = serializers.CharField(source="grade.name")
+    major = serializers.SerializerMethodField()
+    grade = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -33,8 +33,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         # pop grade name and major name from validated_data
-        grade_data = validated_data.pop("grade")
         major_data = validated_data.pop("major")
+        grade_data = validated_data.pop("grade")
 
         # get grade and major instacne
         try:
@@ -52,3 +52,13 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data["major"] = major
         validated_data["grade"] = grade
         return super().update(instance, validated_data)
+
+    def get_major(self, user):
+        if user.major is not None:
+            return user.major
+        return ""
+
+    def get_grade(self, user):
+        if user.grade is not None:
+            return user.grade
+        return ""
