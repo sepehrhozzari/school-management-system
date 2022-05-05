@@ -36,9 +36,9 @@ class User(AbstractUser):
         verbose_name="تاریخ تولد", null=True, blank=True)
     father_name = models.CharField(
         max_length=200, null=True, blank=True, verbose_name="نام پدر")
-    grade = models.ForeIgnKey(Grade, null=True, blank=True, on_delete=models.SET_NULL,
+    grade = models.ForeignKey(Grade, null=True, blank=True, on_delete=models.SET_NULL,
                               related_name="students", verbose_name="مقطع تحصیلی")
-    major = models.ForeIgnKey(Major, null=True, blank=True, on_delete=models.SET_NULL,
+    major = models.ForeignKey(Major, null=True, blank=True, on_delete=models.SET_NULL,
                               related_name="students", verbose_name="رشته تحصیلی")
 
     def __str__(self):
