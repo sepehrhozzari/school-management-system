@@ -35,3 +35,9 @@ class User(AbstractUser):
         verbose_name = "کاربر"
         verbose_name_plural = "کاربران"
         ordering = ("-data_of_birth",)
+
+    def get_full_name(self):
+        if not self.first_name and not self.last_name:
+            return self.username
+        else:
+            return "%s %s" % (self.first_name, self.last_name)
