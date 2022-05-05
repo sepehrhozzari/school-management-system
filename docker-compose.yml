@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   postgresql:
-    image: "postgresql"
+    image: "postgres"
     container_name: "postgresql"
     restart: "always"
     expose:
