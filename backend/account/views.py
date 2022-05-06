@@ -14,7 +14,7 @@ class UserViewSet(ModelViewSet):
         if self.action == "list":
             permission_classes = [IsAdminUser, ]
         elif self.action == "create":
-            permission_classes = [IsSuperUser]
+            permission_classes = [IsSuperUser, ]
         else:
             permission_classes = [IsAdminOrStudent, ]
         return [permission() for permission in permission_classes]

@@ -27,6 +27,9 @@ urlpatterns = [
          PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
 
 
-    path('api/v1/account/', include("account.urls", namespace="v1")),
-    path('api/v2/account/', include("account.urls", namespace="v2")),
+    path('api/v1/account/', include("account.urls", namespace="account_v1")),
+    path('api/v2/account/', include("account.urls", namespace="account_v2")),
+
+    path('api/v1/exam/', include("exam.urls", namespace="exam_v1")),
+    path('api/v2/exam/', include("exam.urls", namespace="exam_v2")),
 ]
