@@ -9,6 +9,7 @@ class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     permission_classes = [IsAdminOrTeacher, ]
     filterset_fields = ("major", "grade")
+    search_fields = ("name",)
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
