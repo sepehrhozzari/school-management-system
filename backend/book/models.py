@@ -8,3 +8,6 @@ class Book(models.Model):
                               related_name="books", verbose_name="مقطع تحصیلی کتاب")
     major = models.ForeignKey(Major, on_delete=models.CASCADE,
                               related_name="books", verbose_name="مرتبط به رشته تحصیلی")
+
+    def __str__(self):
+        return self.name
