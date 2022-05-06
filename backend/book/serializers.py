@@ -4,6 +4,7 @@ from .models import Book
 
 class BookReadSerializer(serializers.ModelSerializer):
     major = serializers.SerializerMethodField()
+    grade = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
@@ -11,3 +12,6 @@ class BookReadSerializer(serializers.ModelSerializer):
 
     def get_major(self, obj):
         return obj.major.name
+
+    def get_grade(self, obj):
+        return obj.grade.name
