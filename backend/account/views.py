@@ -1,14 +1,13 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from .models import User
-from .serializers import UserSerializer
+from .serializers import UserReadSerializer, UserPostSerializer
 from rest_framework.permissions import IsAdminUser
 from .permissions import IsAdminOrStudent, IsSuperUser
 
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
     filterset_fields = ["is_student", "is_teacher", "national_code",
                         "data_of_birth", "father_name", "grade", "major"]
 
@@ -20,3 +19,8 @@ class UserViewSet(ModelViewSet):
         else:
             permission_classes = [IsAdminOrStudent, ]
         return [permission() for permission in permission_classes]
+
+    def get_serializer_class(self):
+        if self.action in ["list", "retrieve"]:
+            return UserReadSerializer
+        return UserPostSerializer
