@@ -3,7 +3,7 @@ from .models import Exam
 
 
 class ExamAdmin(admin.ModelAdmin):
-    list_display = ("title", "description", "start_date", "time")
+    list_display = ("title", "start_date", "time")
     list_filter = ("start_date",)
     ordering = ("-start_date",)
     search_fields = ("title", "description")
