@@ -15,3 +15,9 @@ class BookReadSerializer(serializers.ModelSerializer):
 
     def get_grade(self, obj):
         return obj.grade.name
+
+
+class BookPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = "__all__"
