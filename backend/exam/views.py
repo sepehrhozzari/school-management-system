@@ -9,3 +9,4 @@ class ExamViewSet(ModelViewSet):
     queryset = Exam.objects.all()
     serializer_class = ExamSerializer
     permission_classes = [IsTeacherOrReadOnly, ]
+    filterset_fields = ["start_date", "time"]
