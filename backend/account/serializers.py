@@ -64,3 +64,13 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data["major"] = major
         validated_data["grade"] = grade
         return super().update(instance, validated_data)
+
+    def validate_national_code(self, value):
+        if value == "":
+            return value
+        else:
+            if User.objects.filter(national_code=value).exists():
+                raise serializers.ValidationError(
+                    "این کد ملی قبلا برای یک کاربری دیگر است")
+            else:
+                return value
