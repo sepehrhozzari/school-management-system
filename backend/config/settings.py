@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # our apps
     'account.apps.AccountConfig',
     'exam.apps.ExamConfig',
+    'book.apps.BookConfig',
 ]
 
 MIDDLEWARE = [

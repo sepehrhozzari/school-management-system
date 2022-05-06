@@ -32,4 +32,7 @@ urlpatterns = [
 
     path('api/v1/exam/', include("exam.urls", namespace="exam_v1")),
     path('api/v2/exam/', include("exam.urls", namespace="exam_v2")),
+
+    path('api/v1/book/', include("book.urls", namespace="book_v1")),
+    path('api/v2/book/', include("book.urls", namespace="book_v2")),
 ]
