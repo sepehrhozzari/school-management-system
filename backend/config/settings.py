@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'django_filters',
 
     # our apps
     'account.apps.AccountConfig',
@@ -158,6 +159,9 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_VERSIONING_CLASSES": [
         "rest_framework.versioning.NameSpaceVersioning",
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
     ],
 }
 SITE_ID = 1
