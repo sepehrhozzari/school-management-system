@@ -9,6 +9,8 @@ from .permissions import IsAdminOrStudent, IsSuperUser
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    filterset_fields = ["is_student", "is_teacher", "national_code",
+                        "data_of_birth", "father_name", "grade", "major"]
 
     def get_permissions(self):
         if self.action == "list":
