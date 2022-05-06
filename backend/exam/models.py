@@ -9,3 +9,8 @@ class Exam(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ["-start_date", ]
+        verbose_name = "امتحان"
+        verbose_name_plural = "امتحانات"
