@@ -8,6 +8,7 @@ from account.permissions import IsAdminOrTeacher
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     permission_classes = [IsAdminOrTeacher, ]
+    filterset_fields = ("major", "grade")
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
