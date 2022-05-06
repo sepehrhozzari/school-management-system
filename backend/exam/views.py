@@ -10,3 +10,4 @@ class ExamViewSet(ModelViewSet):
     serializer_class = ExamSerializer
     permission_classes = [IsTeacherOrReadOnly, ]
     filterset_fields = ["start_date", "time"]
+    search_fields = ["title", "description"]
