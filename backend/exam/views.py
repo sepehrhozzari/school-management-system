@@ -11,3 +11,4 @@ class ExamViewSet(ModelViewSet):
     permission_classes = [IsTeacherOrReadOnly, ]
     filterset_fields = ["start_date", "time"]
     search_fields = ["title", "description"]
+    ordering_fields = ["start_date", "time"]
